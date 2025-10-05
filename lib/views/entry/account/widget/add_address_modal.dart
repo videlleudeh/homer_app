@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homer_app/views/custom_features/custom_fullbutton.dart';
+import 'package:homer_app/custom_features/custom_fullbutton.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class TAddressModal extends StatelessWidget {

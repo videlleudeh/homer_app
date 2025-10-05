@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:homer_app/assets/images.dart';
 import 'package:homer_app/controllers/user_controller.dart';
 import 'package:homer_app/views/authentication/screens/loading.dart';
-import 'package:homer_app/views/custom_features/custom_appbar.dart';
-import 'package:homer_app/views/custom_features/custom_dialog.dart';
+import 'package:homer_app/custom_features/custom_appbar.dart';
+import 'package:homer_app/custom_features/custom_dialog.dart';
 import 'package:homer_app/views/entry/account/widget/edit_profile.dart';
 import 'package:homer_app/views/entry/account/widget/profile_tile.dart';
-import 'package:homer_app/views/entry/round_container.dart';
-import 'package:homer_app/views/entry/section_heading.dart';
+import 'package:homer_app/custom_features/round_container.dart';
+import 'package:homer_app/custom_features/section_heading.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});

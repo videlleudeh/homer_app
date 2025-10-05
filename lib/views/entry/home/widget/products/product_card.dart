@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:homer_app/assets/images.dart';
 
 import 'package:homer_app/views/entry/home/screens/product_detail.dart';
-import 'package:homer_app/views/entry/round_icon.dart';
-import 'package:homer_app/views/entry/round_image.dart';
+import 'package:homer_app/custom_features/round_icon.dart';
+import 'package:homer_app/custom_features/round_image.dart';
 
 class TProductVCard extends StatelessWidget {
   const TProductVCard({super.key, this.margin});

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:homer_app/views/entry/home/screens/checkout.dart';
 
 import 'package:homer_app/views/entry/home/widget/cart/cart_item.dart';
-import 'package:homer_app/views/custom_features/custom_appbar.dart';
-import 'package:homer_app/views/custom_features/custom_fullbutton.dart';
+import 'package:homer_app/custom_features/custom_appbar.dart';
+import 'package:homer_app/custom_features/custom_fullbutton.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});

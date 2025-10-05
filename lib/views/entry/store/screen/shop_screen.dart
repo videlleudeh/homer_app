@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:homer_app/views/custom_features/custom_appbar.dart';
-import 'package:homer_app/views/custom_features/custom_listview.dart';
-import 'package:homer_app/views/custom_features/custom_search.dart';
-import 'package:homer_app/views/custom_features/custom_gridview.dart';
-import 'package:homer_app/views/entry/section_heading.dart';
+import 'package:homer_app/custom_features/custom_appbar.dart';
+import 'package:homer_app/custom_features/custom_listview.dart';
+import 'package:homer_app/custom_features/custom_search.dart';
+import 'package:homer_app/custom_features/custom_gridview.dart';
+import 'package:homer_app/custom_features/section_heading.dart';
 import 'package:homer_app/views/entry/store/widget/category_item.dart';
 import 'package:homer_app/views/entry/store/widget/room_category.dart';
 

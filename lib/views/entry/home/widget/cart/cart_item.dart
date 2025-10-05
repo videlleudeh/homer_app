@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'package:homer_app/assets/images.dart';
-import 'package:homer_app/views/entry/round_icon.dart';
-import 'package:homer_app/views/entry/round_image.dart';
+import 'package:homer_app/custom_features/round_icon.dart';
+import 'package:homer_app/custom_features/round_image.dart';
 
 class TCartItem extends StatelessWidget {
   const TCartItem({super.key, this.showCounter = true});

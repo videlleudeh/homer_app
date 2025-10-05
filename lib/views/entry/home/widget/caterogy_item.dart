@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homer_app/views/entry/round_container.dart';
+import 'package:homer_app/custom_features/round_container.dart';
 
 class CaterogyIconItem extends StatelessWidget {
   const CaterogyIconItem({
@@ -23,11 +23,19 @@ class CaterogyIconItem extends StatelessWidget {
             TRoundContainer(
               width: 60,
               height: 60,
-              bgColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-              child: Image.asset(
+              bgColor: Colors.grey.shade200,
+              child: Image.network(
                 image,
+                width: 40,
+                height: 40,
                 color: Theme.of(context).colorScheme.onPrimaryFixedVariant,
                 fit: BoxFit.fill,
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(
+                    Icons.image_not_supported,
+                    color: Theme.of(context).colorScheme.onPrimaryFixedVariant,
+                  );
+                },
               ),
             ),
             const SizedBox(height: 8),

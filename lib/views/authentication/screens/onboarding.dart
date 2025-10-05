@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:homer_app/views/authentication/widgets/indicator.dart';
 import 'package:homer_app/data/pgcontent.dart';
 import 'package:homer_app/views/authentication/screens/login.dart';
-import 'package:homer_app/views/custom_features/custom_fullbutton.dart';
+import 'package:homer_app/custom_features/custom_fullbutton.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

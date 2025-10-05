@@ -4,9 +4,9 @@ import 'package:homer_app/views/entry/home/widget/products/product_attribute.dar
 import 'package:homer_app/views/entry/home/widget/products/product_review.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_display.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_metadata.dart';
-import 'package:homer_app/views/custom_features/custom_listview.dart';
+import 'package:homer_app/custom_features/custom_listview.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_card.dart';
-import 'package:homer_app/views/entry/section_heading.dart';
+import 'package:homer_app/custom_features/section_heading.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_bottomnav.dart';
 
 class ProductDetailScreen extends StatefulWidget {

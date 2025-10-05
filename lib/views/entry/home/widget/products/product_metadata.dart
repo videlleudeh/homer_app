@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_description.dart';
-import 'package:homer_app/views/entry/product_price.dart';
+import 'package:homer_app/custom_features/product_price.dart';
 
 class TProductMetaData extends StatelessWidget {
   const TProductMetaData({super.key});

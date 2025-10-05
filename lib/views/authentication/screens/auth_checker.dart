@@ -24,20 +24,18 @@ class AuthChecker extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authState = ref.watch(authStateProvider);
-    ref.listen(authStateProvider, (previous, next) {
-      print("AuthState changed from $previous to $next");
-      next.when(
-        data: (user) =>
-            print("New user: ${user?.uid}, verified: ${user?.emailVerified}"),
-        loading: () => print("Auth loading"),
-        error: (error, _) => print("Auth error: $error"),
-      );
-    });
+    // ref.listen(authStateProvider, (previous, next) {
+    //   print("AuthState changed from $previous to $next");
+    //   next.when(
+    //     data: (user) =>
+    //         print("New user: ${user?.uid}, verified: ${user?.emailVerified}"),
+    //     loading: () => print("Auth loading"),
+    //     error: (error, _) => print("Auth error: $error"),
+    //   );
+    // });
 
     return authState.when(
       data: (user) {
-        print("AuthChecker - User: ${user?.uid}");
-        print("AuthChecker - Email verified: ${user?.emailVerified}");
         if (user == null) {
           print("AuthChecker - Showing LoginScreen");
           return const LoginScreen();
@@ -51,11 +49,9 @@ class AuthChecker extends ConsumerWidget {
         }
       },
       loading: () {
-        print("AuthChecker - Loading");
         return LoadingScreen();
       },
       error: (error, stack) {
-        print("AuthChecker - Error: $error");
         return LoginScreen();
       },
     );

@@ -8,7 +8,7 @@ class TRoundContainer extends StatelessWidget {
     this.height,
     this.radius = 100,
     this.padding = const EdgeInsets.all(12),
-    this.bgColor = const Color.fromARGB(92, 238, 238, 235),
+    this.bgColor = const Color.fromARGB(92, 236, 236, 231),
     this.boxBorder,
   });
 

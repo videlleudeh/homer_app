@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:homer_app/assets/images.dart';
 import 'package:homer_app/controllers/verifyemail_controller.dart';
-import 'package:homer_app/views/custom_features/custom_appbar.dart';
-import 'package:homer_app/views/custom_features/custom_fullbutton.dart';
-import 'package:homer_app/views/entry/round_image.dart';
+import 'package:homer_app/custom_features/custom_appbar.dart';
+import 'package:homer_app/custom_features/custom_fullbutton.dart';
+import 'package:homer_app/custom_features/round_image.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
   const VerifyEmailScreen({super.key});

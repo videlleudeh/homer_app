@@ -10,11 +10,11 @@ import 'package:homer_app/views/entry/account/screens/transaction.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:homer_app/assets/images.dart';
 
-import 'package:homer_app/views/custom_features/custom_fullbutton.dart';
+import 'package:homer_app/custom_features/custom_fullbutton.dart';
 import 'package:homer_app/views/entry/account/widget/settings_listtile.dart';
-import 'package:homer_app/views/custom_features/custom_appbar.dart';
-import 'package:homer_app/views/entry/round_container.dart';
-import 'package:homer_app/views/entry/section_heading.dart';
+import 'package:homer_app/custom_features/custom_appbar.dart';
+import 'package:homer_app/custom_features/round_container.dart';
+import 'package:homer_app/custom_features/section_heading.dart';
 
 class SettingScreen extends ConsumerStatefulWidget {
   const SettingScreen({super.key});

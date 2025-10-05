@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:homer_app/controllers/form_controller.dart';
 import 'package:homer_app/controllers/signup_controller.dart';
-import 'package:homer_app/views/custom_features/custom_fullbutton.dart';
+import 'package:homer_app/custom_features/custom_fullbutton.dart';
 import 'package:homer_app/views/authentication/screens/login.dart';
 
 class TSignUpForm extends ConsumerStatefulWidget {

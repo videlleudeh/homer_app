@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:homer_app/assets/images.dart';
 
-import 'package:homer_app/views/custom_features/custom_listview.dart';
 import 'package:homer_app/views/entry/home/screens/all_product.dart';
 import 'package:homer_app/views/entry/home/screens/checkout.dart';
 import 'package:homer_app/views/entry/home/widget/carousel_image.dart';
 import 'package:homer_app/views/entry/home/widget/carousel_slider.dart';
-import 'package:homer_app/views/custom_features/custom_appbar.dart';
-import 'package:homer_app/views/custom_features/custom_search.dart';
-import 'package:homer_app/views/custom_features/custom_gridview.dart';
-import 'package:homer_app/views/entry/home/widget/caterogy_icon.dart';
+import 'package:homer_app/custom_features/custom_appbar.dart';
+import 'package:homer_app/custom_features/custom_search.dart';
+import 'package:homer_app/custom_features/custom_gridview.dart';
+import 'package:homer_app/views/entry/home/widget/home_category.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_card.dart';
-import 'package:homer_app/views/entry/section_heading.dart';
-import 'package:homer_app/views/entry/store/screen/category.dart';
+import 'package:homer_app/custom_features/section_heading.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             TAppBar(
-              title: "HomeHaven",
+              title: "homer",
               iconButton: Icons.shopping_cart_outlined,
               isSubIcon: true,
               onPressed: () {
@@ -46,27 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 20),
                   const TSectionHeading(title: "Categories", showButton: false),
                   const SizedBox(height: 16),
-                  SizedBox(
-                    height: 90,
-                    child: TListView(
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      itemCount: 6,
-                      itemBuilder: (context, index) {
-                        return CaterogyIconItem(
-                          image: TImages.iconChair,
-                          title: "Chair",
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => CategoryScreen(),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ),
+                  const THomeCategories(),
                   const SizedBox(height: 20),
                   Column(
                     children: [
