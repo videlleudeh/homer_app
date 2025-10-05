@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:homer_app/controllers/edit_controller.dart';
-import 'package:homer_app/controllers/form_controller.dart';
+import 'package:homer_app/provider/form_provider.dart';
 import 'package:homer_app/custom_features/custom_fullbutton.dart';
 import 'package:homer_app/views/entry/account/widget/add_address_modal.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';

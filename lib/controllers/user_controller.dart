@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:homer_app/models/user.dart';
-import 'package:homer_app/provider/index_bottonnav.dart';
+import 'package:homer_app/provider/nav_index_provider.dart';
 import 'package:homer_app/repository/auth_repository.dart';
 import 'package:homer_app/repository/user_repository.dart';
 

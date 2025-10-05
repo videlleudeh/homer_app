@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:homer_app/provider/index_bottonnav.dart';
+import 'package:homer_app/provider/nav_index_provider.dart';
 
 class HomeNav extends ConsumerWidget {
   const HomeNav({super.key});
