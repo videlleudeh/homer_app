@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:homer_app/models/product_model.dart';
 import 'package:readmore/readmore.dart';
 
 class TProductDesc extends StatelessWidget {
-  const TProductDesc({super.key});
+  final ProductModel? product;
+  const TProductDesc({super.key, this.product});
 
   @override
   Widget build(BuildContext context) {
     return ReadMoreText(
-      "A minimalist chair with a reversible back cushion provides soft support for your back and has two sides to wear. A minimalist chair with a reversible back cushion provides soft support for your back and has two sides to wear.",
-      trimLines: 3,
+      product!.description,
       trimMode: TrimMode.Line,
       trimCollapsedText: 'Show more',
       trimExpandedText: 'Show less',

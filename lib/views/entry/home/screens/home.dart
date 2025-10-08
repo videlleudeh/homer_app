@@ -4,13 +4,12 @@ import 'package:homer_app/assets/images.dart';
 
 import 'package:homer_app/views/entry/home/screens/all_product.dart';
 import 'package:homer_app/views/entry/home/screens/checkout.dart';
-import 'package:homer_app/views/entry/home/widget/carousel_image.dart';
-import 'package:homer_app/views/entry/home/widget/carousel_slider.dart';
+import 'package:homer_app/views/entry/home/widget/home/home_carousel_image.dart';
+import 'package:homer_app/views/entry/home/widget/home/home_carousel_slider.dart';
 import 'package:homer_app/custom_features/custom_appbar.dart';
 import 'package:homer_app/custom_features/custom_search.dart';
-import 'package:homer_app/custom_features/custom_gridview.dart';
-import 'package:homer_app/views/entry/home/widget/home_category.dart';
-import 'package:homer_app/views/entry/home/widget/products/product_card.dart';
+import 'package:homer_app/views/entry/home/widget/home/home_category.dart';
+import 'package:homer_app/views/entry/home/widget/home/home_product.dart';
 import 'package:homer_app/custom_features/section_heading.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -83,22 +82,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       );
                     },
                   ),
-                  // SizedBox(height: 16),
-                  TGridView(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisExtent: 300,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 18,
-                    ),
-                    itemCount: 4,
-                    scrollDirection: Axis.vertical,
-                    scrollPhysics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (cntxt, index) {
-                      return const TProductVCard();
-                    },
-                  ),
+                  THomeProducts(),
                 ],
               ),
             ),

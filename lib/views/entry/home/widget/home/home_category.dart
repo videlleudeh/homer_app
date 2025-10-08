@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:homer_app/custom_features/custom_listview.dart';
 import 'package:homer_app/provider/category_provider.dart';
-import 'package:homer_app/views/entry/home/widget/caterogy_item.dart';
+import 'package:homer_app/views/entry/home/widget/home/home_caterogy_item.dart';
 import 'package:homer_app/views/entry/store/screen/category.dart';
 
 class THomeCategories extends ConsumerWidget {

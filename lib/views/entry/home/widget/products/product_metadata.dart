@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:homer_app/views/entry/home/widget/products/product_description.dart';
+import 'package:homer_app/models/product_model.dart';
 import 'package:homer_app/custom_features/product_price.dart';
 
 class TProductMetaData extends StatelessWidget {
-  const TProductMetaData({super.key});
+  final ProductModel product;
+  const TProductMetaData({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -21,21 +22,23 @@ class TProductMetaData extends StatelessWidget {
                 ).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w900),
               ),
               Spacer(),
-              const TProductPrice(
-                price: "N45,000",
+              TProductPrice(
+                price: product.price.toString(),
                 isLineThrough: true,
                 isLarge: false,
               ),
               SizedBox(width: 6),
-              const TProductPrice(price: "N35,000", isLineThrough: false),
+              TProductPrice(
+                price: product.salesPrice.toString(),
+                isLineThrough: false,
+              ),
             ],
           ),
           //  Product Name
           SizedBox(height: 16),
-          Text(
-            "Armchair, Gunnared light green",
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
+
+          Text(product.name, style: Theme.of(context).textTheme.bodyLarge),
+
           SizedBox(height: 12),
           Row(
             children: [
@@ -48,9 +51,6 @@ class TProductMetaData extends StatelessWidget {
               const Text("(245)"),
             ],
           ),
-          //  Product Description
-          SizedBox(height: 12),
-          const TProductDesc(),
         ],
       ),
     );

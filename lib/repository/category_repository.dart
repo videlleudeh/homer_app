@@ -13,9 +13,9 @@ class CategoryRepository {
           .toList();
       return categotyList;
     } on FirebaseException catch (e) {
-      throw 'Failed to get user data: ${e.message}';
+      throw 'Failed to get category data: ${e.message}';
     } catch (e) {
-      throw 'Failed to get user data. Please try again';
+      throw 'Failed to get category data. Please try again';
     }
   }
 }

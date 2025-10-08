@@ -1,24 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:homer_app/assets/images.dart';
+import 'package:homer_app/models/product_model.dart';
 
 import 'package:homer_app/views/entry/home/screens/product_detail.dart';
 import 'package:homer_app/custom_features/round_icon.dart';
 import 'package:homer_app/custom_features/round_image.dart';
 
 class TProductVCard extends StatelessWidget {
-  const TProductVCard({super.key, this.margin});
-
+  final ProductModel product;
+  final String productName;
+  final String productThumbnail;
+  final String productPrice;
   final EdgeInsetsGeometry? margin;
+  final bool networkImage;
+  const TProductVCard({
+    super.key,
+    required this.product,
+    required this.productName,
+    required this.productThumbnail,
+    required this.productPrice,
+    this.margin,
+    this.networkImage = true,
+  });
 
   @override
   Widget build(BuildContext context) {
-    // final nairaSymbol = TImages.naira;
-
     return GestureDetector(
       onTap: () {
-        Navigator.of(
-          context,
-        ).push(MaterialPageRoute(builder: (context) => ProductDetailScreen()));
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ProductDetailScreen(product: product),
+          ),
+        );
       },
       child: Container(
         margin: margin,
@@ -43,8 +56,9 @@ class TProductVCard extends StatelessWidget {
               height: 200,
               child: Stack(
                 children: [
-                  const TRoundImage(
-                    image: TImages.light0ne,
+                  TRoundImage(
+                    isNetworkImage: networkImage,
+                    image: productThumbnail,
                     imageWidth: double.infinity,
                     imageHeight: 200,
                   ),
@@ -110,14 +124,14 @@ class TProductVCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Wooden Chair",
+                    productName,
                     style: Theme.of(context).textTheme.bodyMedium,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
 
                   Text(
-                    "N35,000",
+                    productPrice,
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontWeight: FontWeight.bold,
                     ),

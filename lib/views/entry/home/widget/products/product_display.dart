@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:homer_app/assets/images.dart';
 import 'package:homer_app/custom_features/custom_appbar.dart';
 import 'package:homer_app/custom_features/round_image.dart';
+import 'package:homer_app/models/product_model.dart';
 
 class TProductDisplay extends StatelessWidget {
-  const TProductDisplay({super.key});
+  final ProductModel product;
+  const TProductDisplay({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class TProductDisplay extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             height: 400,
-            child: Image.asset(TImages.light0ne, fit: BoxFit.fill),
+            child: Image.network(product.imageUrl, fit: BoxFit.fill),
           ),
 
           //  App bar
@@ -45,8 +46,8 @@ class TProductDisplay extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {},
-                        child: const TRoundImage(
-                          image: TImages.light,
+                        child: TRoundImage(
+                          image: product.imageUrl,
                           imageWidth: 60,
                         ),
                       );

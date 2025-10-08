@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:homer_app/models/product_model.dart';
 
 import 'package:homer_app/views/entry/home/widget/products/product_attribute.dart';
+import 'package:homer_app/views/entry/home/widget/products/product_description.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_review.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_display.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_metadata.dart';
-import 'package:homer_app/custom_features/custom_listview.dart';
-import 'package:homer_app/views/entry/home/widget/products/product_card.dart';
 import 'package:homer_app/custom_features/section_heading.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_bottomnav.dart';
+import 'package:homer_app/views/entry/home/widget/products/product_similar.dart';
 
 class ProductDetailScreen extends StatefulWidget {
-  const ProductDetailScreen({super.key});
+  final ProductModel product;
+
+  const ProductDetailScreen({super.key, required this.product});
 
   @override
   State<ProductDetailScreen> createState() => _ProductDetailScreenState();
@@ -24,7 +27,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         child: Column(
           children: [
             //  Product Display
-            TProductDisplay(),
+            TProductDisplay(product: widget.product),
 
             // Product Details
             const SizedBox(height: 16),
@@ -34,8 +37,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Product MetaData
-                  TProductMetaData(),
-                  const SizedBox(height: 24),
+                  TProductMetaData(product: widget.product),
+                  const SizedBox(height: 12),
+
+                  //  Product Description
+                  TProductDesc(product: widget.product),
 
                   //  Product Attribute
                   TProductAttribute(),
@@ -55,20 +61,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     showButton: true,
                   ),
                   const SizedBox(height: 16),
-                  Container(
-                    padding: EdgeInsets.all(0),
-                    height: 320,
-                    child: TListView(
-                      itemBuilder: (cntxt, index) {
-                        return const TProductVCard(
-                          margin: EdgeInsets.only(right: 16, bottom: 10),
-                        );
-                      },
-                      itemCount: 5,
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                    ),
-                  ),
+                  TSimilarProducts(),
                 ],
               ),
             ),
