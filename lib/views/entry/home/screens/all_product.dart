@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:homer_app/assets/images.dart';
 import 'package:homer_app/custom_features/custom_appbar.dart';
 import 'package:homer_app/custom_features/custom_gridview.dart';
 import 'package:homer_app/custom_features/custom_listview.dart';

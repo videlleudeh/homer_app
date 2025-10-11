@@ -44,7 +44,7 @@ class AuthChecker extends ConsumerWidget {
           return const VerifyEmailScreen();
         } else {
           print("AuthChecker - Showing HomeNav");
-          ref.read(bottomNavIndexProvider.notifier).state = 0;
+          // ref.read(bottomNavIndexProvider.notifier).state = 0;
           return const HomeNav();
         }
       },

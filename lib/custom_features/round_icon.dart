@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class TRoundIcon extends StatelessWidget {
   const TRoundIcon({
     super.key,
+    this.onPressed,
     this.borderRadius = 100,
     this.width = 32,
     this.height = 32,
@@ -13,11 +14,15 @@ class TRoundIcon extends StatelessWidget {
     this.boxBorder,
   });
 
-  final double? width, height, iconSize;
+  final double? width;
+  final double? height;
+  final double? iconSize;
   final double borderRadius;
-  final Color? bgColor, iconColor;
+  final Color? bgColor;
+  final Color? iconColor;
   final IconData? icon;
   final BoxBorder? boxBorder;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class TRoundIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: IconButton(
-        onPressed: () {},
+        onPressed: onPressed,
         padding: const EdgeInsets.all(1),
         icon: Icon(icon, size: iconSize, color: iconColor),
       ),

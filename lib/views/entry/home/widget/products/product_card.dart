@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:homer_app/assets/images.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:homer_app/models/product_model.dart';
+import 'package:homer_app/provider/favorite_provider.dart';
 
 import 'package:homer_app/views/entry/home/screens/product_detail.dart';
 import 'package:homer_app/custom_features/round_icon.dart';
 import 'package:homer_app/custom_features/round_image.dart';
 
-class TProductVCard extends StatelessWidget {
+class TProductVCard extends ConsumerWidget {
   final ProductModel product;
   final String productName;
   final String productThumbnail;
@@ -24,7 +25,31 @@ class TProductVCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final favoriteProduct = ref.watch(favoriteProvider);
+    final isFavorite = favoriteProduct.contains(product);
+
+    void onFavorite() {
+      final isAdded = ref
+          .read(favoriteProvider.notifier)
+          .onClickFavorite(product);
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            isAdded
+                ? "Product Added to Favorite"
+                : "Product Removed from Favorite",
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.circular(50),
+          ),
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
@@ -66,8 +91,10 @@ class TProductVCard extends StatelessWidget {
                     top: 5,
                     left: 5,
                     child: TRoundIcon(
-                      bgColor: Colors.grey.withAlpha(150),
-                      icon: Icons.favorite_border,
+                      bgColor: const Color.fromARGB(92, 197, 197, 195),
+                      icon: isFavorite ? Icons.favorite : Icons.favorite_border,
+                      iconColor: isFavorite ? Colors.red : null,
+                      onPressed: onFavorite,
                     ),
                   ),
                   Positioned(

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:homer_app/assets/images.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:homer_app/custom_features/custom_appbar.dart';
 import 'package:homer_app/custom_features/custom_gridview.dart';
-import 'package:homer_app/models/product_model.dart';
+import 'package:homer_app/provider/favorite_provider.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_card.dart';
 
-class FavoriteScreen extends StatelessWidget {
+class FavoriteScreen extends ConsumerWidget {
   const FavoriteScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final favorites = ref.watch(favoriteProvider);
     return Scaffold(
       appBar: const TAppBar(
         isReturn: true,
@@ -20,39 +21,47 @@ class FavoriteScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsetsGeometry.all(16),
-          child: Column(
-            children: [
-              TGridView(
-                itemBuilder: (cntxt, index) {
-                  return TProductVCard(
-                    product: ProductModel(
-                      id: "id",
-                      name: "name",
-                      imageUrl: "imageUrl",
-                      thumbnail: "thumbnail",
-                      price: 0,
-                      salesPrice: 0,
-                      description: "description",
-                      categoryId: "categoryId",
+          child: favorites.isEmpty
+              ? Center(
+                  child:
+                      // Column(
+                      //   // mainAxisSize: MainAxisSize.min,
+                      //   children: [
+                      Text(
+                        "Ooops... Continue browsing to like products!",
+                        style: Theme.of(context).textTheme.headlineSmall!
+                            .copyWith(fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                  // ],
+                  // ),
+                )
+              : Column(
+                  children: [
+                    TGridView(
+                      itemBuilder: (cntxt, index) {
+                        final favoriteProduct = favorites[index];
+                        return TProductVCard(
+                          product: favoriteProduct,
+                          productThumbnail: favoriteProduct.thumbnail,
+                          productName: favoriteProduct.name,
+                          productPrice: favoriteProduct.price.toStringAsFixed(
+                            2,
+                          ),
+                        );
+                      },
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisExtent: 300,
+                        crossAxisSpacing: 16,
+                        mainAxisSpacing: 18,
+                      ),
+                      itemCount: favorites.length,
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
                     ),
-                    networkImage: false,
-                    productThumbnail: TImages.light0ne,
-                    productName: " Wooden Chair",
-                    productPrice: "N35,000",
-                  );
-                },
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisExtent: 300,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 18,
+                  ],
                 ),
-                itemCount: 6,
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-              ),
-            ],
-          ),
         ),
       ),
     );
