@@ -30,7 +30,7 @@ class TRoundImage extends StatelessWidget {
                   return const Center(child: Text("Image not found"));
                 },
               )
-            : Image.network(
+            : Image.asset(
                 image,
                 fit: BoxFit.fill,
                 height: imageHeight,

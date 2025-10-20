@@ -8,7 +8,7 @@ class TImages {
   static const verified = "assets/images/onboard/mail.png";
 
   // Categories Icon
-  static const iconChair = "assets/icons/icon-armchair.png";
+  // static const iconChair = "assets/icons/icon-armchair.png";
   static const profileOne = "assets/icons/profile-image.png";
 
   // Payment Icon
@@ -37,4 +37,5 @@ class TImages {
   //  Categoris Image
   static const chairCategory =
       "assets/images/category-images/category-chair.png";
+  static const nothingFound = "assets/icons/nothing-found.png";
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homer_app/custom_features/round_image.dart';
 import 'package:homer_app/models/product_model.dart';
 
 import 'package:homer_app/views/entry/home/widget/products/product_attribute.dart';
@@ -28,9 +29,33 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           children: [
             //  Product Display
             TProductDisplay(product: widget.product),
+            const SizedBox(height: 12),
+
+            Container(
+              margin: EdgeInsets.only(left: 14),
+              width: MediaQuery.of(context).size.width,
+              height: 60,
+              child: ListView.separated(
+                shrinkWrap: true,
+
+                scrollDirection: Axis.horizontal,
+                physics: AlwaysScrollableScrollPhysics(),
+                separatorBuilder: (_, __) => SizedBox(width: 8),
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {},
+                    child: TRoundImage(
+                      image: widget.product.imageUrl,
+                      imageWidth: 65,
+                    ),
+                  );
+                },
+              ),
+            ),
 
             // Product Details
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -42,17 +67,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
                   //  Product Description
                   TProductDesc(product: widget.product),
+                  const SizedBox(height: 12),
 
                   //  Product Attribute
                   TProductAttribute(),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 12),
 
                   //  Product Review
-                  const Divider(),
-                  const SizedBox(height: 10),
                   TProductReview(),
-                  const SizedBox(height: 10),
-                  const Divider(),
 
                   //  Similar Products
                   const SizedBox(height: 12),
@@ -68,7 +90,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: TProductBottomNav(),
+      bottomNavigationBar: TProductBottomNav(product: widget.product),
     );
   }
 }

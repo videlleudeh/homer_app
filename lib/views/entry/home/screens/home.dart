@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:homer_app/assets/images.dart';
 
 import 'package:homer_app/views/entry/home/screens/all_product.dart';
-import 'package:homer_app/views/entry/home/screens/checkout.dart';
+import 'package:homer_app/views/entry/home/screens/cart.dart';
 import 'package:homer_app/views/entry/home/widget/home/home_carousel_image.dart';
 import 'package:homer_app/views/entry/home/widget/home/home_carousel_slider.dart';
 import 'package:homer_app/custom_features/custom_appbar.dart';
@@ -31,9 +31,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               iconButton: Icons.shopping_cart_outlined,
               isSubIcon: true,
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => CheckoutScreen()),
-                );
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => CartScreen()));
               },
             ),
             Padding(

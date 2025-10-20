@@ -3,7 +3,7 @@ import 'package:homer_app/assets/images.dart';
 import 'package:homer_app/custom_features/custom_appbar.dart';
 import 'package:homer_app/custom_features/custom_fullbutton.dart';
 import 'package:homer_app/views/entry/home/screens/success.dart';
-import 'package:homer_app/views/entry/home/widget/cart/cart_item.dart';
+// import 'package:homer_app/views/entry/home/widget/cart/cart_item.dart';
 import 'package:homer_app/views/entry/account/screens/transaction.dart';
 import 'package:homer_app/views/entry/account/widget/add_address_modal.dart';
 import 'package:homer_app/views/entry/account/widget/address_item.dart';
@@ -37,8 +37,7 @@ class CheckoutScreen extends StatelessWidget {
               const SizedBox(height: 16),
               const TSectionHeading(title: "Products (2)", showButton: false),
               const SizedBox(height: 12),
-              const TCartItem(showCounter: false),
-              const TCartItem(showCounter: false),
+              // const TCartItem(showCounter: false),
 
               // Payment Methos
               const SizedBox(height: 16),

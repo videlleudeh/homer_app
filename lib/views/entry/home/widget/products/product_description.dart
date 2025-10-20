@@ -3,15 +3,13 @@ import 'package:homer_app/models/product_model.dart';
 import 'package:readmore/readmore.dart';
 
 class TProductDesc extends StatelessWidget {
-  final ProductModel? product;
-  const TProductDesc({super.key, this.product});
+  final ProductModel product;
+  const TProductDesc({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return ReadMoreText(
-      product!.description,
-      trimMode: TrimMode.Line,
-      trimCollapsedText: 'Show more',
+      product.description,
       trimExpandedText: 'Show less',
       moreStyle: TextStyle(
         color: Theme.of(context).colorScheme.primary,

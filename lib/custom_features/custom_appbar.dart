@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:homer_app/provider/cart_provider.dart';
 
-class TAppBar extends StatelessWidget implements PreferredSizeWidget {
+class TAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const TAppBar({
     super.key,
     this.title = "HomeDec",
@@ -20,7 +22,8 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isReturn, isCenter, isSubIcon, isTitle;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cartState = ref.watch(cartProvider);
     return AppBar(
       backgroundColor: bgColor,
       automaticallyImplyLeading: isReturn,
@@ -52,7 +55,7 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
                       color: Theme.of(context).colorScheme.inversePrimary,
                       borderRadius: BorderRadius.circular(100),
                     ),
-                    child: Center(child: Text("1")),
+                    child: Center(child: Text(cartState.length.toString())),
                   ),
                 ),
             ],

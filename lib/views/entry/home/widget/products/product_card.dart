@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:homer_app/custom_features/custom_snackbar.dart';
+import 'package:homer_app/models/cart_model.dart';
 import 'package:homer_app/models/product_model.dart';
+import 'package:homer_app/provider/cart_provider.dart';
 import 'package:homer_app/provider/favorite_provider.dart';
 
 import 'package:homer_app/views/entry/home/screens/product_detail.dart';
@@ -33,20 +36,25 @@ class TProductVCard extends ConsumerWidget {
       final isAdded = ref
           .read(favoriteProvider.notifier)
           .onClickFavorite(product);
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            isAdded
-                ? "Product Added to Favorite"
-                : "Product Removed from Favorite",
-          ),
-          backgroundColor: Theme.of(context).colorScheme.primary,
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(50),
-          ),
-        ),
+      showSuccessSnackbar(
+        context,
+        isAdded ? "Product Added to Favorite" : "Product Removed from Favorite",
+        null,
+      );
+    }
+
+    void onAddToCart() {
+      final cartItem = CartModel(
+        uid: product.id,
+        productImage: product.imageUrl,
+        productName: product.name,
+        productPrice: product.salesPrice,
+      );
+      ref.read(cartProvider.notifier).addToCart(cartItem);
+      showSuccessSnackbar(
+        context,
+        "${cartItem.productName} Added to Cart",
+        null,
       );
     }
 
@@ -109,7 +117,7 @@ class TProductVCard extends ConsumerWidget {
                       ),
                       child: IconButton(
                         padding: const EdgeInsets.all(1),
-                        onPressed: () {},
+                        onPressed: onAddToCart,
                         icon: const Icon(
                           Icons.add,
                           size: 20,

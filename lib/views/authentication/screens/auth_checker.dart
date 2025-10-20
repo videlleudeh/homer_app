@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:homer_app/navigation.dart';
-import 'package:homer_app/provider/nav_index_provider.dart';
 import 'package:homer_app/repository/auth_repository.dart';
 import 'package:homer_app/views/authentication/screens/loading.dart';
 import 'package:homer_app/views/authentication/screens/login.dart';
@@ -24,15 +23,6 @@ class AuthChecker extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authState = ref.watch(authStateProvider);
-    // ref.listen(authStateProvider, (previous, next) {
-    //   print("AuthState changed from $previous to $next");
-    //   next.when(
-    //     data: (user) =>
-    //         print("New user: ${user?.uid}, verified: ${user?.emailVerified}"),
-    //     loading: () => print("Auth loading"),
-    //     error: (error, _) => print("Auth error: $error"),
-    //   );
-    // });
 
     return authState.when(
       data: (user) {

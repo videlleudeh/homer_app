@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:homer_app/assets/images.dart';
 import 'package:homer_app/custom_features/custom_appbar.dart';
+import 'package:homer_app/custom_features/custom_fullbutton.dart';
 import 'package:homer_app/custom_features/custom_gridview.dart';
+import 'package:homer_app/custom_features/round_image.dart';
 import 'package:homer_app/provider/favorite_provider.dart';
+import 'package:homer_app/views/entry/home/screens/all_product.dart';
 import 'package:homer_app/views/entry/home/widget/products/product_card.dart';
 
 class FavoriteScreen extends ConsumerWidget {
@@ -18,25 +22,51 @@ class FavoriteScreen extends ConsumerWidget {
         isCenter: true,
         iconButton: Icons.add,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsetsGeometry.all(16),
-          child: favorites.isEmpty
-              ? Center(
-                  child:
-                      // Column(
-                      //   // mainAxisSize: MainAxisSize.min,
-                      //   children: [
-                      Text(
-                        "Ooops... Continue browsing to like products!",
-                        style: Theme.of(context).textTheme.headlineSmall!
-                            .copyWith(fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                  // ],
-                  // ),
-                )
-              : Column(
+      body: favorites.isEmpty
+          ? Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TRoundImage(
+                      isNetworkImage: false,
+                      image: TImages.nothingFound,
+                      imageHeight: 250,
+                      imageWidth: 250,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Your wishlist is empty!",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      textAlign: TextAlign.center,
+                      "Looks like you haven’t added anything to your wishlist yet ",
+                    ),
+
+                    SizedBox(height: 16),
+                    TButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => AllProductScreen(),
+                          ),
+                        );
+                      },
+                      buttonTitle: "Explore Now",
+                    ),
+                    SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            )
+          : SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsetsGeometry.all(16),
+                child: Column(
                   children: [
                     TGridView(
                       itemBuilder: (cntxt, index) {
@@ -62,8 +92,8 @@ class FavoriteScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
-        ),
-      ),
+              ),
+            ),
     );
   }
 }

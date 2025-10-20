@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homer_app/views/entry/home/widget/cart/cart_item.dart';
+// import 'package:homer_app/views/entry/home/widget/cart/cart_item.dart';
 import 'package:homer_app/custom_features/round_container.dart';
 
 class TOrderDetailItem extends StatelessWidget {
@@ -17,7 +17,7 @@ class TOrderDetailItem extends StatelessWidget {
         boxBorder: Border.all(color: Colors.grey),
         child: Column(
           children: [
-            const TCartItem(showCounter: false),
+            // const TCartItem(showCounter: false),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

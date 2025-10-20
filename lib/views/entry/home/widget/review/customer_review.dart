@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:homer_app/views/entry/home/widget/products/product_description.dart';
 import 'package:homer_app/views/entry/home/widget/review/star_rating.dart';
 
 class TCustomerReview extends StatelessWidget {
@@ -36,7 +35,9 @@ class TCustomerReview extends StatelessWidget {
           ),
           TStarRating(rating: 3.5, size: 16),
           SizedBox(height: 12),
-          TProductDesc(),
+          Text(
+            "Show more Show more Show more Show more Show more Show more Show more Show more Show more Show more Show moreShow more ",
+          ),
         ],
       ),
     );
