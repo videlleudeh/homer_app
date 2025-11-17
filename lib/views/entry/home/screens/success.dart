@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:homer_app/views/entry/account/screens/transaction.dart';
 import 'package:lottie/lottie.dart';
 import 'package:homer_app/custom_features/custom_appbar.dart';
 import 'package:homer_app/custom_features/custom_fullbutton.dart';
@@ -42,6 +43,14 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(height: 12),
               Text(textAlign: TextAlign.center, subtitleText),
 
+              SizedBox(height: 12),
+
+              // TextButton(
+              //   onPressed: () => Navigator.of(context).push(
+              //     MaterialPageRoute(builder: (context) => TransactionScreen()),
+              //   ),
+              //   child: Text("Return Home"),
+              // ),
               SizedBox(height: 32),
               TButton(onPressed: onPressed, buttonTitle: buttonText),
             ],

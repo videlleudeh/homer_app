@@ -59,6 +59,10 @@ class CartNotifier extends StateNotifier<List<CartModel>> {
       }
     }
   }
+
+  void clearCart() {
+    state = [];
+  }
 }
 
 final cartProvider = StateNotifierProvider<CartNotifier, List<CartModel>>((

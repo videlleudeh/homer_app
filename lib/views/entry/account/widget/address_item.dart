@@ -13,7 +13,8 @@ class TAddressItem extends StatelessWidget {
         width: double.infinity,
         height: 110,
         radius: 12,
-        bgColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+        bgColor: Colors.white70,
+        // Theme.of(context).colorScheme.surfaceContainerHighest,
         child: Stack(
           children: [
             Positioned(right: 5, child: Icon(Iconsax.tick_circle_copy)),

@@ -8,19 +8,21 @@ class TCartItem extends StatelessWidget {
   final String name;
   final int quantity;
   final double price;
-  final void Function() onDelete;
-  final void Function() onIncreaseQ;
-  final void Function() onDecreaseQ;
+  final void Function()? onDelete;
+  final void Function()? onIncreaseQ;
+  final void Function()? onDecreaseQ;
+  final EdgeInsetsGeometry? margin;
   const TCartItem({
     super.key,
     required this.image,
     required this.name,
     required this.quantity,
     required this.price,
-    required this.onDelete,
-    required this.onIncreaseQ,
-    required this.onDecreaseQ,
+    this.onDelete,
+    this.onIncreaseQ,
+    this.onDecreaseQ,
     this.showCounter = true,
+    this.margin,
   });
 
   final bool showCounter;
@@ -29,15 +31,16 @@ class TCartItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 140,
+      margin: margin,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainerLow,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.shade600,
-            spreadRadius: -1,
+            color: Colors.grey.shade400,
+            spreadRadius: 1,
             blurRadius: 1.5,
-            offset: const Offset(-1, -1),
+            offset: const Offset(0, 0),
           ),
         ],
       ),
@@ -132,9 +135,22 @@ class TCartItem extends StatelessWidget {
                             ),
                           ],
                         )
-                      : Text(
-                          price.toString(),
-                          style: Theme.of(context).textTheme.bodyLarge,
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            RichText(
+                              text: TextSpan(
+                                text: "Qty: ",
+                                children: [TextSpan(text: quantity.toString())],
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                            ),
+
+                            Text(
+                              "N$price",
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ],
                         ),
                 ],
               ),
