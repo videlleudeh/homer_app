@@ -1,13 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hive/hive.dart';
 
-class CartModel {
+part 'cart_model.g.dart';
+
+@HiveType(typeId: 0)
+class CartModel extends HiveObject {
+  @HiveField(0)
   final String uid;
+
+  @HiveField(1)
   final String productImage;
+
+  @HiveField(2)
   final String productName;
+
+  @HiveField(3, defaultValue: Color.fromARGB(202, 199, 11, 11))
   final Color? color;
+
+  @HiveField(4, defaultValue: 1)
   int quantity;
+
+  @HiveField(5)
   final double productPrice;
+
   CartModel({
     required this.uid,
     required this.productImage,

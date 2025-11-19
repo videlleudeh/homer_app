@@ -1,14 +1,35 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hive/hive.dart';
 
-class ProductModel {
+part 'product_model.g.dart';
+
+@HiveType(typeId: 1)
+class ProductModel extends HiveObject {
+  @HiveField(0)
   final String id;
+
+  @HiveField(1)
   final String name;
+
+  @HiveField(2)
   final String imageUrl;
+
+  @HiveField(3)
   final String thumbnail;
+
+  @HiveField(4)
   final double price;
+
+  @HiveField(5)
   final double salesPrice;
+
+  @HiveField(6)
   final String description;
+
+  @HiveField(7)
   final String categoryId;
+
+  @HiveField(8, defaultValue: true)
   final bool isSales;
 
   ProductModel({

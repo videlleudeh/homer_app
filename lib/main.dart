@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:homer_app/views/authentication/screens/auth_checker.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'firebase_options.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:homer_app/models/cart_model.dart';
+import 'package:homer_app/models/product_model.dart';
+import 'package:homer_app/views/authentication/screens/auth_checker.dart';
 
 TextTheme appTextTheme(BuildContext context) {
   try {
@@ -16,7 +20,13 @@ TextTheme appTextTheme(BuildContext context) {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Hive.initFlutter();
 
+  Hive.registerAdapter(CartModelAdapter());
+  Hive.registerAdapter(ProductModelAdapter());
+
+  await Hive.openBox<CartModel>('cartBox');
+  await Hive.openBox<ProductModel>('favoriteBox');
   runApp(const ProviderScope(child: App()));
 }
 

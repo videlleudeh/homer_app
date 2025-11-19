@@ -1,66 +1,64 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:homer_app/models/cart_model.dart';
 
 class CartNotifier extends StateNotifier<List<CartModel>> {
-  CartNotifier() : super([]);
+  Box<CartModel> cartBox;
+  CartNotifier(this.cartBox) : super(cartBox.values.toList());
 
   // Add item to cart
   bool addToCart(CartModel item) {
-    final idItem = state.indexWhere(
-      (selectedItem) => selectedItem.uid == item.uid,
-    );
+    final isExisting = cartBox.containsKey(item.uid);
 
-    if (idItem != -1) {
-      final updatedList = [...state];
-      updatedList[idItem].quantity++;
-      state = updatedList;
-      return true;
-    } else {
-      state = [...state, item];
+    if (isExisting) {
+      final cartItem = cartBox.get(item.uid)!;
+      cartItem.quantity++;
+      cartItem.save();
+      state = cartBox.values.toList();
       return false;
+    } else {
+      cartBox.put(item.uid, item);
+      state = cartBox.values.toList();
+      return true;
     }
   }
 
   //  remove item from cart
   bool deleteItem(String uid) {
-    state = state.where((item) => item.uid != uid).toList();
+    cartBox.delete(uid);
+    state = cartBox.values.toList();
     return true;
   }
 
   // undo delete
-  void undoDelete(String uid) {}
+  // void undoDelete(String uid) {}
 
   //  increase quantity
   void increaseQ(String uid) {
-    final idItem = state.indexWhere((selectedItem) => selectedItem.uid == uid);
-    if (idItem != -1) {
-      final updatedItem = state[idItem].copyWith(
-        quantity: state[idItem].quantity + 1,
-      );
-      final newList = [...state];
-      newList[idItem] = updatedItem;
-      state = newList;
+    final cartItem = cartBox.get(uid);
+    if (cartItem != null) {
+      cartItem.quantity++;
+      cartItem.save();
+      state = cartBox.values.toList();
     }
   }
 
   // decrease quantity
   void decreaseQ(String uid) {
-    final idItem = state.indexWhere((selectedItem) => selectedItem.uid == uid);
-    if (idItem != -1) {
-      if (state[idItem].quantity > 1) {
-        final updatedItem = state[idItem].copyWith(
-          quantity: state[idItem].quantity - 1,
-        );
-        final newList = [...state];
-        newList[idItem] = updatedItem;
-        state = newList;
+    final cartItem = cartBox.get(uid);
+    if (cartItem != null) {
+      if (cartItem.quantity > 1) {
+        cartItem.quantity--;
+        cartItem.save();
       } else {
-        deleteItem(uid);
+        cartBox.delete(uid);
       }
+      state = cartBox.values.toList();
     }
   }
 
   void clearCart() {
+    cartBox.clear();
     state = [];
   }
 }
@@ -68,5 +66,6 @@ class CartNotifier extends StateNotifier<List<CartModel>> {
 final cartProvider = StateNotifierProvider<CartNotifier, List<CartModel>>((
   ref,
 ) {
-  return CartNotifier();
+  final cartbox = Hive.box<CartModel>('cartBox');
+  return CartNotifier(cartbox);
 });

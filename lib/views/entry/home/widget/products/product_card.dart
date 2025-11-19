@@ -29,8 +29,8 @@ class TProductVCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final favoriteProduct = ref.watch(favoriteProvider);
-    final isFavorite = favoriteProduct.contains(product);
+    // final favoriteProduct = ref.watch(favoriteProvider);
+    final isFavorite = ref.read(favoriteProvider.notifier).isFav(product);
 
     void onFavorite() {
       final isAdded = ref
